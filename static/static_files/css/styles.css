@@ -1,0 +1,23 @@
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+#main-section {
+  background: url(../img/adult-cheerful-coffee-1083623.jpg);
+  background-size: cover;
+  min-height: 700px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+.navbar {
+  opacity: 0.8;
+}
+#main-section .section-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  min-height: 700px;
+}

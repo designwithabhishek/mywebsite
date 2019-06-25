@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container">
+          <a href="#" class="navbar-brand ">Design With Abhishek</a>
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#mynav">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="collapse navbar-collapse justify-content-end" id="mynav">   
+          <ul  class="navbar-nav">
+              <li class="nav-item">
+                <a href="#" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item ">
+                <a href="#" class="nav-link  ">About us</a>
+              </li>
+              <li class="nav-item ">
+                <a href="{% url 'blog:blog_list' %}" class="nav-link  ">Blogs</a>
+              </li>
+              <li class="nav-item dropdown mr-3">
+
+                <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Work</a>
+                <div class="dropdown-menu">
+                        <a href="" class="dropdown-item">My template Designs</a>
+                        <a href="" class="dropdown-item">Ecommerce-Websites</a>
+                        <a href="" class="dropdown-item">Social Projects</a>
+                    </div>
+              </li>
+
+            </ul>
+            </div>           
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="carousel slide" data-ride="carousel" >
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+            <img class="d-block w-100" src="{% static 'static_files/img/adult-cheerful-coffee-1083623.jpg' %}" />
+            </div>
+            <div class="carousel-item">
+            <img  class="d-block w-100" src="{% static 'static_files/img/adults-collaborate-collaboration-1036641.jpg' %}" />
+            </div>
+            <div class="carousel-item">
+            <img class="d-block w-100" src="{% static 'static_files/img/businessmen-businesspeople-businesswomen-1249158.jpg' %}" />
+            </div>
+        </div>
+    </div>
+    <div class="container bg-light mb-5" >
+       <h1 class="text-center display-2 mb-3">My Team</h1>
+       <div class="row  "> 
+        <div class="col-md-4 m-auto">
+         <div class="card">
+          <img class="card-img-top" src="{% static 'static_files/img/adult-boy-casual-220453.jpg' %}" >
+           <div class="card-body">
+            <h1 class="card-title">John Smith</h1>
+            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+           </div>
+         </div>
+        </div>
+        <div class="col-md-4 m-auto">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'static_files/img/beautiful-woman-blur-brunette-2464638.jpg' %}" >
+                <div class="card-body">
+                <h1 class="card-title">Katy Smith</h1>
+                <p class="card-text">Lorem ipsum, dolor sit amet</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 m-auto">
+            <div class="card">
+                <img class="d-block card-img-top" src="{% static 'static_files/img/beautiful-eyes-beautiful-woman-blur-2476705.jpg' %}" >
+                <div class="card-body">
+                <h1 class="card-title">kristine Stewart</h1>
+                <p class="card-text">Lorem ipsum, dolor sit am</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 m-auto">
+                <div class="card" >
+                    <img class="card-img-top " d src="{% static 'static_files/img/adult-avenida-paulista-backpack-1553783.jpg' %}" >
+                    <div class="card-body ">
+                    <h1 class="card-title">Charles Cruise</h1>
+                    <p class="card-text">Lorem ipsum, dolor sit am</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+    <div class="row m-0 bg-light">
+     <div class="col-md-5  p-0 h-100">
+      <img class="w-100 h-100" src="{% static 'static_files/img/beautiful-digital-nomad-facial-expression-1977047.jpg'%}" />
+     </div>
+     <div class="col-md-6 offset-1">
+     <h1 class="display-1 mt-3">Contact us</h1>
+     <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, doloremque!</p>
+        <form action="{% url 'contact:contacts_list' %}" method="post">
+            {% csrf_token %}
+         <div class="form-group">
+             <label for="name">Name</label>
+             <input id="name" type="text" name="name" class="form-control">
+             <label for="Comp-name">Company Name</label>
+             <input id="Comp-name" type="text" name="company_name" class="form-control">
+             <label for="user-name">Email/Username</label>
+             <input type="email" name="username" id="user-name" class="form-control">
+             <label for="contact">Contact</label>
+             <input id="Contact" type="number" name="contact_number" class="form-control">
+             <label for="message">Message</label>
+             <textarea class="form-control" name="message" id="message" placeholder="Enter your message">
+             </textarea>
+             <button class="mt-2 btn btn-dark" value="submit">Submit</button>
+         </div>
+     </form>
+         {% if messages %}
+      <div class="alert alert-dark">
+          {% for message in messages %}
+          {{message}}
+          {% endfor %}
+      </div>
+         {% endif %}
+     </div>
+    </div>
+  </div>        
+  </body>
+</html>

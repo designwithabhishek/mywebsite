@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bootstrap Theme</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'static_files/css/styles.css' %}" />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm fixed-top">
+      <div class="container">
+        <a href="#" class="navbar-brand">Design With Abhishek</a>
+        <button
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#mynavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="mynavbar">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">Work</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">Blogs</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--
+            main-section
+          -->
+    <div id="main-section">
+      <div class="section-overlay">
+        <div class="main-section-inner py-5 container align-items-center">
+          <div
+            class="row p-5 align-items-center text-center"
+            style="height:600px"
+          >
+            <div class="col-12 ">
+              <h1 class="display-3 text-white">{{blog_detail.title}}</h1>
+              <p class="lead text-light">Created by {{blog_detail.author}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      blog-content
+    -->
+    <section class="blog-content">
+      <div class="container p-5">
+        <div class="row">
+          <div class="col-md-8">
+            <p class="lead">
+             {{blog_detail.content}}
+            </p>
+          </div>
+          <div class="col-md-4">
+            <form action="{% url 'blog:blog_list' %}">
+              <div class="input-group">
+                <input type="search" class="form-control" name="q" placeholder="Search here">
+                <input type="submit" class="btn btn-secondary">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--
+      comment-section
+    -->
+    <section class="comment-section">
+      <div class="container bg-light">
+        <div class="row p-3">
+          <div class="col">
+            <h3 class="display-4 my-4">Comments</h3>
+              {% for comment in comments %}
+            <div class="media m-2">
+              <img
+                src="{{comment.images.url}}"
+                width="150px"
+                height="200px"
+              />
+              <div class="media-body ml-4">
+                <h3 class="display-5">{{comment.name}}</h3>
+                  <p class="text-muted">{{comment.created}}</p>
+                <p class="lead">
+                  {{comment.content}}
+                </p>
+              </div>
+            </div>
+              {% endfor %}
+          </div>
+        </div>
+        </div>
+      <div class="container bg-light py-4 my-3">
+        <div class="row">
+          <div class="col">
+            <h1 class="display-3">Leave a Comment</h1>
+
+            <form action="{% url 'blog:blog_detail' blog_detail.id %}"  enctype='multipart/form-data' method="POST">
+            {% csrf_token %}
+                <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name">
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="images">
+              <label for="image" class="custom-file-label">Image</label>
+            </div>
+              <div class="form-group mt-2">
+               <label for="content">Comment</label>
+               <textarea class="form-control" name="content" >Enter your Comment here</textarea>
+              </div>
+              <button class="btn btn-dark" type="submit" >Submit</button>
+            </form>
+              <div class="alert alert-secondary">
+
+                  {% for message in messages %}
+                  {{message}}
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
+      </div>
+    </section>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $('#year').text(new Date().getFullYear());
+    </script>
+  </body>
+</html>

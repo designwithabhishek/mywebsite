@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bootstrap Theme</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'static_files/css/styles.css' %}" />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm fixed-top">
+      <div class="container">
+        <a href="#" class="navbar-brand">Design With Abhishek</a>
+        <button
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#mynavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="mynavbar">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">Work</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">Blogs</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--
+            main-section
+          -->
+    <div id="main-section">
+      <div class="section-overlay">
+        <div class="main-section-inner py-5 container align-items-center">
+          <div
+            class="row p-5 align-items-center text-center"
+            style="height:600px"
+          >
+            <div class="col-12 ">
+              <h1 class="display-3 text-white">My Blogs</h1>
+              <p class="lead text-light">Created by Abhishek</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section id="blog_list" class="bg-light">
+    <div class="container" style="padding:50px">
+      <div class="d-flex flex-wrap justify-content-center">
+      {% for blog in blogs %}
+      <div class="card m-2" style="width:300px">
+          <img class="card-img-top" src="{{blog.image.url}}" alt="">
+          <div class="card-body">
+            <div class="card-title"><h6>{{blog.title}}<h6></div>
+              <div class="card-content">
+                  <p class="lead">{{blog.content|truncatechars:30}}</p>
+                  <p><a href="{% url 'blog:blog_detail' blog.id %}">Read more</a></p>
+            </div>
+          </div>
+      </div>
+      {% endfor %}
+      </div>
+      </div>
+    </div>
+    </section>
+    <!--
+    pagination
+    -->
+    <section class="container p-2 m-2 ml-auto ">
+      <div class="pagination">
+      <span class="step-links">
+        {% if blogs.has_previous %}
+            <a class="btn " href="?page={{ blogs.previous_page_number }}">&laquo;</a>
+        {% endif %}
+        {% for pages in blogs.paginator.page_range %}
+        <span class="current">
+            <a class="btn btn-primary " href="?page={{pages}}">{{pages}}</a>
+        </span>
+        {% endfor %}
+        {% if blogs.has_next %}
+            <a class="btn " href="?page={{ blogs.next_page_number }}">&raquo;</a>
+        {% endif %}
+    </span>
+</div>
+    </section>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $('#year').text(new Date().getFullYear());
+    </script>
+  </body>
+</html>
