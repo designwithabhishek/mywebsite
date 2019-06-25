@@ -8,10 +8,10 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 def blog_list(request):
-    blogs=Post.objects.all()
-    #paginator=Paginator(blogs_list,3)
-    #page = request.GET.get('page')
-    #blogs = paginator.get_page(page)
+    blogs_list=Post.objects.all()
+    paginator=Paginator(blogs_list,3)
+    page = request.GET.get('page')
+    blogs = paginator.get_page(page)
     search_query=request.GET.get('q')
     if search_query:
         blogs=blogs.filter(
